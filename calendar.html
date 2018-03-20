@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Calendar Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      background-image: url("bg.jpg");
+    }
+    #main_calendar td{
+      width:14%;
+      margin-top: 18px;
+    }
+    #top_display{
+      text-align: center;
+      font-size: 40;
+      font-weight: bold;
+    }
+
+    #login{
+      margin-left: 10%;
+      margin-top: 18px;
+      padding-left: 0;
+    }
+    #user_display{
+      margin-left: 10%;
+      margin-top: 18px;
+      padding-left: 0;
+    }
+    #logout{
+      margin-left: 10%;
+      margin-top: 18px;
+      padding-left: 0;
+    }
+    #add_event{
+      margin-left: 10%;
+      margin-top: 18px;
+      padding-left: 0;
+      margin-bottom: 10%;
+    }
+    #add_event input{
+      width: 150px;
+    }
+    .btn-group{
+      margin-left: 10%;
+      margin-top: 18px;
+    }
+    .shareEvents{
+      margin-left: 15%;
+      margin-top: 18px;
+    }
+  </style>
+</head>
+<body>
+  <!-- month and year -->
+  <div id="top_display">
+    <button id="prev_month_btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+    <span id="month_name"></span>
+    <span id="year"></span>
+    <button id="next_month_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+  </div>
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-info">
+      Business
+    </button>
+    <button type="button" class="btn btn-primary">
+      Family
+    </button>
+    <button type="button" class="btn btn-success">
+      School
+    </button>
+    <button type="button" class="btn btn-secondary">
+      Shared Events
+    </button>
+  </div>
+
+  <div id="shareEvents" class = "shareEvents">
+    Share my events with a registered user:
+    <input type="text" id="share_username" placeholder="Username" required/>
+    <button id="share_events_btn" onclick="share_events()">Share</button>
+    <input type="hidden" name="token" id="token" value="<?php echo $_SESSION['token'];?>" />
+  </div>
+
+  <!-- calendar   -->
+  <div id="main_calendar" class="container"></div>
+
+  <div id="user_display">
+  </div>
+
+  <!-- login or register -->
+  <div id="login">
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button id="login_btn">Log In</button>
+    <button id="register_btn">Register</button>
+  </div>
+
+  <div id="logout">
+    <button id="logout_btn">Logout</button>
+  </div>
+
+
+
+  <div class="row">
+    <div id="add_event">
+      <input type="text" name="title" id="title" placeholder="Title" required/>
+      <input type="number" name="day" id="day" min="1" max="31" placeholder="Day" required/>
+      <input type="number" name="hour" id="hour" min="0" max="24" placeholder="Hour" required/>
+      <input type="number" name="minute" id="minute" min="0" max="59" placeholder="Minute" required/>
+      <select id="tag">
+        <option value="B">Business</option>
+        <option value="F">Family</option>
+        <option value="S">School</option>
+      </select>
+      <button id="add_event_btn">Add</button>
+      <button id="add_as_group_btn">Add as group event</button>
+    </div>
+  </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="http://classes.engineering.wustl.edu/cse330/content/calendar.min.js"></script>
+<script type="text/javascript" src="user.js"></script>
+<script src="cal.js"></script>
+</body>
+</html>
