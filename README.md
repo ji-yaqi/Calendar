@@ -1,8 +1,4 @@
 # README #
-
-Yaqi Ji (Bessie) 448284
-
-
 By pressing the drop-down button, you will see the details -> time of the event, edit or delete event.
 
 Our creative portions are:
